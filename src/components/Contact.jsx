@@ -162,15 +162,15 @@ export default function Contact() {
                         <span className="font-mono text-xs tracking-[0.3em] text-ink-300 uppercase">Get In Touch</span>
                         <div className="flex-1 h-px bg-gradient-to-r from-ink-100 via-accent-coral/20 to-transparent hidden lg:block" />
                     </div>
-                    <h2 className="font-display text-3xl sm:text-4xl font-bold text-ink-700 mb-2 text-center lg:text-left">
+                    <h2 className="font-display text-2xl sm:text-4xl font-bold text-ink-700 mb-2 text-center lg:text-left">
                         Let's work together
                     </h2>
-                    <h2 className="font-sketch text-3xl sm:text-4xl mb-8 text-center lg:text-left">
+                    <h2 className="font-sketch text-2xl sm:text-4xl mb-8 text-center lg:text-left">
                         <span className="text-accent-blue">create</span>{' '}
                         <span className="text-accent-coral">something</span>{' '}
                         <span className="text-accent-teal">great ✦</span>
                     </h2>
-                    <p className="font-body text-ink-400 max-w-lg leading-relaxed mb-12 text-center lg:text-left mx-auto lg:mx-0">
+                    <p className="font-body text-sm sm:text-base text-ink-400 max-w-lg leading-relaxed mb-12 text-center lg:text-left mx-auto lg:mx-0">
                         Have a project in mind or just want to chat? Feel free to reach out. I'm always open to discussing new projects and opportunities.
                     </p>
                 </div>
@@ -212,7 +212,7 @@ export default function Contact() {
                                         </div>
                                         <div>
                                             <span className="block text-xs font-bold text-ink-400 uppercase tracking-wider mb-1">Email Me</span>
-                                            <span className="block font-heading text-lg font-bold text-ink-700 group-hover/email:text-accent-blue transition-colors break-all">adhiyasa1203@gmail.com</span>
+                                            <span className="block font-heading text-base md:text-lg font-bold text-ink-700 group-hover/email:text-accent-blue transition-colors break-all">adhiyasa1203@gmail.com</span>
                                         </div>
                                     </a>
 
@@ -316,10 +316,10 @@ export default function Contact() {
                                     <SiWhatsapp className="w-8 h-8" />
                                 </div>
 
-                                <h3 className="font-heading text-xl font-bold text-ink-700 mb-2">
+                                <h3 className="font-heading text-lg md:text-xl font-bold text-ink-700 mb-2">
                                     Let's Connect!
                                 </h3>
-                                <p className="font-body text-sm text-ink-400 max-w-xs mx-auto mb-8 leading-relaxed">
+                                <p className="font-body text-xs sm:text-sm text-ink-400 max-w-xs mx-auto mb-8 leading-relaxed">
                                     Want to discuss a project or just say hi? Chat me directly on WhatsApp for the fastest response.
                                 </p>
 
@@ -327,7 +327,7 @@ export default function Contact() {
                                     href={waLink('berdiskusi')}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] text-white rounded-xl font-heading text-sm font-bold shadow-lg shadow-green-200 hover:shadow-xl hover:shadow-green-300 hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
+                                    className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] text-white rounded-xl font-heading text-xs sm:text-sm font-bold shadow-lg shadow-green-200 hover:shadow-xl hover:shadow-green-300 hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
                                 >
                                     <span className="relative z-10 flex items-center gap-2">
                                         Chat on WhatsApp
