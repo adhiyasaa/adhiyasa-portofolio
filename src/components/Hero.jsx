@@ -43,7 +43,7 @@ export default function Hero() {
             {/* 🚀 Rocket — REMOVED to prevent overlap */}
 
             {/* ☕ Coffee cup — right side with steam curls */}
-            <div className="absolute top-[22%] right-[4%] animate-float-delayed select-none hidden md:block" style={{ animationDelay: '0.8s' }}>
+            <div className="absolute top-[22%] right-[4%] animate-float-delayed select-none opacity-50 md:opacity-100 block" style={{ animationDelay: '0.8s' }}>
                 <svg width="44" height="56" viewBox="0 0 50 64" fill="none" className="opacity-25">
                     <rect x="8" y="24" width="26" height="28" rx="4" fill="#E07A5F" opacity="0.6" />
                     <path d="M34 30c6 0 10 4 10 8s-4 8-10 8" stroke="#E07A5F" strokeWidth="2.5" fill="none" opacity="0.4" />
@@ -58,7 +58,7 @@ export default function Hero() {
             {/* 💡 Lightbulb — REMOVED to prevent overlap */}
 
             {/* 🎨 Paint palette — bottom right */}
-            <div className="absolute bottom-[20%] right-[6%] animate-wiggle select-none hidden md:block" style={{ animationDelay: '0.6s' }}>
+            <div className="absolute bottom-[20%] right-[6%] animate-wiggle select-none opacity-50 md:opacity-100 block" style={{ animationDelay: '0.6s' }}>
                 <svg width="50" height="42" viewBox="0 0 56 48" fill="none" className="opacity-25">
                     <ellipse cx="28" cy="26" rx="26" ry="20" fill="#E07A5F" opacity="0.15" />
                     <path d="M28 6c-14 0-26 9-26 20s12 16 22 16c3 0 4-2 4-4s-1-3-1-4c0-2 1-3 3-3h5c8 0 14-5 14-12C49 11 40 6 28 6z" fill="#FAF6EE" stroke="#3D3832" strokeWidth="1.5" opacity="0.5" />
@@ -139,7 +139,7 @@ export default function Hero() {
 
             {/* === FLOATING CODE SNIPPETS (decorative) === */}
             {/* 💻 Realistic IDE Code Block - Text Only (Light Mode) */}
-            <div className="absolute top-[20%] right-[5%] font-mono text-xs sm:text-sm z-10 hidden lg:block animate-float-slow select-none leading-relaxed opacity-90">
+            <div className="absolute top-[15%] right-[2%] lg:top-[20%] lg:right-[5%] font-mono text-[0.6rem] sm:text-xs z-10 animate-float-slow select-none leading-relaxed opacity-60 lg:opacity-90 block scale-90 lg:scale-100 origin-top-right">
                 <div className="flex">
                     <span className="text-gray-400 mr-4 select-none">1</span>
                     <span className="text-purple-600 font-bold">const</span> <span className="text-blue-600 ml-2">Developer</span> <span className="text-gray-600">=</span> <span className="text-yellow-600">{'{'}</span>
@@ -167,7 +167,7 @@ export default function Hero() {
             </div>
 
             {/* Floating Terminal/Console snippet - Text Only (Light Mode) */}
-            <div className="absolute bottom-[20%] left-[45%] font-mono text-[0.55rem] sm:text-xs z-0 hidden lg:block animate-float-delayed -rotate-3 select-none leading-relaxed opacity-80">
+            <div className="absolute bottom-[25%] left-[5%] lg:bottom-[20%] lg:left-[45%] font-mono text-[0.55rem] sm:text-xs z-0 animate-float-delayed -rotate-3 select-none leading-relaxed opacity-50 lg:opacity-80 block scale-90 lg:scale-100 origin-bottom-left">
                 <div><span className="text-accent-blue">➜</span> <span className="text-ink-400">~</span> <span className="text-ink-600">git commit -m</span> <span className="text-accent-coral">"update hero"</span></div>
                 <div className="mt-1 text-ink-300">[main 8a2b3c] update hero</div>
                 <div className="mt-1"><span className="text-accent-blue">➜</span> <span className="text-ink-400">~</span> <span className="text-ink-600">npm run build</span></div>
@@ -188,7 +188,7 @@ export default function Hero() {
             </svg>
 
             {/* Wavy line — middle left */}
-            <svg className="absolute top-[50%] left-0 w-16 h-24 opacity-[0.06] hidden md:block" viewBox="0 0 40 80">
+            <svg className="absolute top-[50%] left-0 w-16 h-24 opacity-[0.06] block" viewBox="0 0 40 80">
                 <path d="M20 5 Q35 20 20 40 Q5 60 20 75" stroke="#5B9A8B" strokeWidth="2" fill="none" strokeLinecap="round" />
             </svg>
 

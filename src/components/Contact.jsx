@@ -60,9 +60,9 @@ const pricingPlans = [
 ];
 
 export default function Contact() {
-    const [headerRef, headerVisible] = useInView({ triggerOnce: false });
-    const [contentRef, contentVisible] = useInView({ threshold: 0.2, triggerOnce: false });
-    const [pricingRef, pricingVisible] = useInView({ threshold: 0.1, triggerOnce: false });
+    const [headerRef, headerVisible] = useInView({ triggerOnce: true });
+    const [contentRef, contentVisible] = useInView({ threshold: 0.2, triggerOnce: true });
+    const [pricingRef, pricingVisible] = useInView({ threshold: 0.1, triggerOnce: true });
     const [expandedPlan, setExpandedPlan] = useState(null);
     const [rateCardOpen, setRateCardOpen] = useState(false);
 
@@ -176,7 +176,7 @@ export default function Contact() {
                 </div>
 
                 {/* ─── Contact Content - Postcard Style ─── */}
-                <div ref={contentRef} className={`relative sketch-border bg-cream-100/80 backdrop-blur-sm rounded-2xl p-8 sm:p-12 reveal ${contentVisible ? 'visible' : ''} overflow-hidden group`}>
+                <div ref={contentRef} className={`relative sketch-border bg-cream-100/80 backdrop-blur-sm rounded-2xl p-5 sm:p-12 reveal ${contentVisible ? 'visible' : ''} overflow-hidden group`}>
                     {/* Paper Texture Overlay */}
                     <div className="absolute inset-0 opacity-[0.4]" style={{ backgroundImage: 'radial-gradient(#7A736A 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }}></div>
 
@@ -194,7 +194,7 @@ export default function Contact() {
                     <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-accent-blue/10 to-transparent pointer-events-none" />
                     <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-accent-coral/10 to-transparent pointer-events-none" />
 
-                    <div className="grid md:grid-cols-2 gap-12 relative z-20">
+                    <div className="grid md:grid-cols-2 gap-8 md:gap-12 relative z-20">
 
                         {/* Left: Contact Info */}
                         <div className="space-y-10">
@@ -212,7 +212,7 @@ export default function Contact() {
                                         </div>
                                         <div>
                                             <span className="block text-xs font-bold text-ink-400 uppercase tracking-wider mb-1">Email Me</span>
-                                            <span className="block font-heading text-lg font-bold text-ink-700 group-hover/email:text-accent-blue transition-colors">adhiyasa1203@gmail.com</span>
+                                            <span className="block font-heading text-lg font-bold text-ink-700 group-hover/email:text-accent-blue transition-colors break-all">adhiyasa1203@gmail.com</span>
                                         </div>
                                     </a>
 
@@ -306,8 +306,8 @@ export default function Contact() {
 
 
                         {/* Right: Direct Chat CTA */}
-                        <div className="relative h-full flex flex-col">
-                            <div className="bg-white rounded-xl shadow-sm border border-ink-100 p-8 h-full flex flex-col justify-center items-center text-center relative overflow-hidden group">
+                        <div className="relative h-full flex flex-col min-h-[300px] md:min-h-0">
+                            <div className="bg-white rounded-xl shadow-sm border border-ink-100 p-6 sm:p-8 h-full flex flex-col justify-center items-center text-center relative overflow-hidden group">
                                 {/* Decorative background elements */}
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-50 to-transparent rounded-bl-full opacity-50" />
                                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-accent-blue/5 to-transparent rounded-tr-full opacity-50" />

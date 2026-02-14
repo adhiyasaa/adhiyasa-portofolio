@@ -2,7 +2,7 @@ import { useInView } from '../hooks/useAnimations';
 
 export default function Footer() {
     const year = new Date().getFullYear();
-    const [ref, visible] = useInView({ triggerOnce: false });
+    const [ref, visible] = useInView({ triggerOnce: true });
 
     return (
         <footer className="border-t-2 border-ink-100 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #FDFBF7 0%, #F0F4FA 35%, #FDFBF7 50%, #FBF3EE 75%, #FDFBF7 100%)' }}>
@@ -16,19 +16,19 @@ export default function Footer() {
             </div>
 
             <div ref={ref} className={`max-w-6xl mx-auto px-6 py-8 reveal ${visible ? 'visible' : ''}`}>
-                <div className={`grid sm:grid-cols-3 gap-8 mb-8 stagger-children ${visible ? 'visible' : ''}`}>
+                <div className={`grid sm:grid-cols-3 gap-8 mb-8 stagger-children text-center sm:text-left ${visible ? 'visible' : ''}`}>
                     <div>
                         <a href="#home" className="font-sketch text-2xl inline-block mb-3">
                             <span className="text-accent-coral animate-wiggle inline-block">✦</span>{' '}
                             <span className="bg-gradient-to-r from-accent-blue via-accent-lavender to-accent-coral bg-clip-text text-transparent font-bold">adhiyasa</span>
                         </a>
-                        <p className="font-body text-sm text-ink-300 leading-relaxed max-w-xs">
+                        <p className="font-body text-sm text-ink-300 leading-relaxed max-w-xs mx-auto sm:mx-0">
                             Professional <span className="text-accent-blue font-medium">Web Developer</span>. Building{' '}
                             <span className="text-accent-teal font-medium">high-performance apps</span> & crafting{' '}
                             <span className="text-accent-coral font-medium">digital experiences</span>.
                         </p>
                         {/* Color dots */}
-                        <div className="flex gap-2 mt-4">
+                        <div className="flex gap-2 mt-4 justify-center sm:justify-start">
                             {['bg-accent-blue', 'bg-accent-coral', 'bg-accent-teal', 'bg-accent-lavender', 'bg-accent-gold'].map((c, i) => (
                                 <div key={i} className={`w-2.5 h-2.5 rounded-full ${c} opacity-50`} />))}
                         </div>
@@ -37,7 +37,7 @@ export default function Footer() {
                         <h4 className="font-heading text-xs font-bold uppercase tracking-[0.2em] text-ink-500 mb-4">Quick Links</h4>
                         <ul className="space-y-2">
                             {['Home', 'About', 'Projects', 'Skills', 'Contact'].map(link => (
-                                <li key={link}><a href={`#${link.toLowerCase()}`} className="font-body text-sm text-ink-300 hover:text-accent-blue transition-colors">{link}</a></li>
+                                <li key={link}><a href={`#${link.toLowerCase()}`} className="font-body text-sm text-ink-300 hover:text-accent-blue transition-colors inline-block py-1">{link}</a></li>
                             ))}
                         </ul>
                     </div>
@@ -50,7 +50,7 @@ export default function Footer() {
                                 { n: 'Instagram', c: 'hover:text-accent-coral', href: 'https://instagram.com/adhiyasast' },
                                 { n: 'Email', c: 'hover:text-accent-gold', href: 'mailto:adhiyasa1203@gmail.com' },
                             ].map(s => (
-                                <li key={s.n}><a href={s.href} target="_blank" rel="noopener noreferrer" className={`font-body text-sm text-ink-300 ${s.c} transition-colors`}>{s.n}</a></li>
+                                <li key={s.n}><a href={s.href} target="_blank" rel="noopener noreferrer" className={`font-body text-sm text-ink-300 ${s.c} transition-colors inline-block py-1`}>{s.n}</a></li>
                             ))}
                         </ul>
                     </div>

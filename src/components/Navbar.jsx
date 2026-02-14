@@ -81,7 +81,9 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-cream-50/90 backdrop-blur-xl shadow-sm py-3' : 'py-5'
+            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+                ? 'bg-cream-50/90 backdrop-blur-xl shadow-sm py-3'
+                : 'bg-cream-50/90 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none shadow-sm md:shadow-none py-3 md:py-5'
                 }`}>
                 {/* Scroll progress bar with rocket + section markers */}
                 <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-visible">
@@ -97,7 +99,7 @@ export default function Navbar() {
                         return (
                             <div
                                 key={marker.id}
-                                className="absolute -top-[5px] group cursor-pointer hidden md:block"
+                                className="absolute -top-[5px] group cursor-pointer"
                                 style={{ left: `${pos}%`, transform: 'translateX(-50%)' }}
                                 onClick={() => {
                                     const el = document.getElementById(marker.id);
