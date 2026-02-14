@@ -242,7 +242,7 @@ export default function Navbar() {
 
                 {/* Mobile brand footer */}
                 <div className="absolute bottom-10 font-sketch text-sm text-ink-200">
-                    <span className="text-accent-coral">✦</span> adhiyasa.dev
+                    <span className="text-accent-coral">✦</span> adhiyasa.site
                 </div>
             </div>
         </>
