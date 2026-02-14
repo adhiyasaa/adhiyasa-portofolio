@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useInView } from '../hooks/useAnimations';
-import { SiGithub, SiLinkedin, SiInstagram } from 'react-icons/si';
+import { SiGithub, SiLinkedin, SiInstagram, SiWhatsapp } from 'react-icons/si';
 
 const WA_NUMBER = '6285950519424';
 const waLink = (plan) =>
-    `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(`Halo, saya tertarik dengan paket ${plan}. Bisa konsultasi lebih lanjut?`)}`;
+    `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(`Halo, saya tertarik untuk ${plan}`)}`;
 
 const pricingPlans = [
     {
@@ -65,23 +65,9 @@ export default function Contact() {
     const [pricingRef, pricingVisible] = useInView({ threshold: 0.1, triggerOnce: false });
     const [expandedPlan, setExpandedPlan] = useState(null);
     const [rateCardOpen, setRateCardOpen] = useState(false);
-    const [isSending, setIsSending] = useState(false);
-    const [isSent, setIsSent] = useState(false);
 
     const togglePlan = (name) => {
         setExpandedPlan(expandedPlan === name ? null : name);
-    };
-
-    const handleSendMessage = (e) => {
-        e.preventDefault();
-        setIsSending(true);
-        // Simulate sending
-        setTimeout(() => {
-            setIsSending(false);
-            setIsSent(true);
-            e.target.reset();
-            setTimeout(() => setIsSent(false), 3000);
-        }, 2000);
     };
 
     // Lock body scroll when modal is open
@@ -318,68 +304,45 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        {/* Right: Form */}
-                        <div className="relative">
-                            {/* Form card look */}
-                            <div className="bg-white rounded-xl shadow-sm border border-ink-100 p-1">
-                                <form className="space-y-4 p-6 sm:p-8" onSubmit={handleSendMessage}>
-                                    <div className="space-y-4">
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            <div className="space-y-1.5">
-                                                <label className="font-heading text-[0.6rem] font-bold text-ink-400 uppercase tracking-wider ml-1">Name</label>
-                                                <input required type="text" className="w-full px-4 py-3 bg-ink-50/50 rounded-lg border border-ink-100 focus:bg-white focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/10 outline-none transition-all duration-300 text-sm font-medium text-ink-700 placeholder-ink-300" placeholder="your name" />
-                                            </div>
-                                            <div className="space-y-1.5">
-                                                <label className="font-heading text-[0.6rem] font-bold text-ink-400 uppercase tracking-wider ml-1">Email</label>
-                                                <input required type="email" className="w-full px-4 py-3 bg-ink-50/50 rounded-lg border border-ink-100 focus:bg-white focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/10 outline-none transition-all duration-300 text-sm font-medium text-ink-700 placeholder-ink-300" placeholder="yourname@example.com" />
-                                            </div>
-                                        </div>
-                                        <div className="space-y-1.5">
-                                            <label className="font-heading text-[0.6rem] font-bold text-ink-400 uppercase tracking-wider ml-1">Message</label>
-                                            <textarea required rows="4" className="w-full px-4 py-3 bg-ink-50/50 rounded-lg border border-ink-100 focus:bg-white focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/10 outline-none transition-all duration-300 resize-none text-sm font-medium text-ink-700 placeholder-ink-300" placeholder="Tell me about your project..." />
-                                        </div>
-                                    </div>
 
-                                    <button
-                                        type="submit"
-                                        disabled={isSending || isSent}
-                                        className={`group w-full relative overflow-hidden px-6 py-4 rounded-lg font-heading text-sm font-bold shadow-lg transition-all duration-300 ${isSent ? 'bg-green-600 text-white shadow-green-200' : 'bg-ink-900 text-cream-50 hover:shadow-accent-blue/20 hover:-translate-y-0.5'}`}
-                                    >
-                                        <div className={`absolute inset-0 bg-gradient-to-r from-accent-blue to-accent-teal opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isSent ? 'hidden' : ''}`} />
-                                        <span className="relative flex items-center justify-center gap-2">
-                                            {isSending ? (
-                                                <>
-                                                    Sending...
-                                                    <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                                    </svg>
-                                                </>
-                                            ) : isSent ? (
-                                                <>
-                                                    Message Sent!
-                                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                                    </svg>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    Send Message
-                                                    <svg className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                                    </svg>
-                                                </>
-                                            )}
-                                        </span>
-                                    </button>
-                                </form>
+                        {/* Right: Direct Chat CTA */}
+                        <div className="relative h-full flex flex-col">
+                            <div className="bg-white rounded-xl shadow-sm border border-ink-100 p-8 h-full flex flex-col justify-center items-center text-center relative overflow-hidden group">
+                                {/* Decorative background elements */}
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-50 to-transparent rounded-bl-full opacity-50" />
+                                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-accent-blue/5 to-transparent rounded-tr-full opacity-50" />
+
+                                <div className="w-16 h-16 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm border border-green-100">
+                                    <SiWhatsapp className="w-8 h-8" />
+                                </div>
+
+                                <h3 className="font-heading text-xl font-bold text-ink-700 mb-2">
+                                    Let's Connect!
+                                </h3>
+                                <p className="font-body text-sm text-ink-400 max-w-xs mx-auto mb-8 leading-relaxed">
+                                    Want to discuss a project or just say hi? Chat me directly on WhatsApp for the fastest response.
+                                </p>
+
+                                <a
+                                    href={waLink('berdiskusi')}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] text-white rounded-xl font-heading text-sm font-bold shadow-lg shadow-green-200 hover:shadow-xl hover:shadow-green-300 hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
+                                >
+                                    <span className="relative z-10 flex items-center gap-2">
+                                        Chat on WhatsApp
+                                        <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </span>
+                                    <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                </a>
                             </div>
-
-                            {/* Decorative element behind form */}
-                            <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-ink-100 rounded-xl -z-10 bg-cream-50" />
                         </div>
-
                     </div>
+
+
+
 
                     {/* Decorative Corner Brackets */}
                     <svg className="absolute top-4 left-4 w-5 h-5 text-ink-300" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
@@ -391,130 +354,132 @@ export default function Contact() {
                 </div>
 
                 {/* ─── Rate Card Modal Overlay ─── */}
-                {rateCardOpen && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setRateCardOpen(false)}>
-                        {/* Backdrop */}
-                        <div className="absolute inset-0 bg-ink-900/60 backdrop-blur-sm animate-fade-in" />
+                {
+                    rateCardOpen && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setRateCardOpen(false)}>
+                            {/* Backdrop */}
+                            <div className="absolute inset-0 bg-ink-900/60 backdrop-blur-sm animate-fade-in" />
 
-                        {/* Modal Content */}
-                        <div
-                            className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-cream-50 rounded-2xl shadow-2xl border border-ink-100/50 p-6 sm:p-8 animate-scale-in"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            {/* Close Button */}
-                            <button
-                                onClick={() => setRateCardOpen(false)}
-                                className="absolute top-4 right-4 p-2 rounded-full bg-white border border-ink-100 hover:border-accent-coral/40 hover:bg-accent-coral/5 transition-all duration-300 z-10"
+                            {/* Modal Content */}
+                            <div
+                                className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-cream-50 rounded-2xl shadow-2xl border border-ink-100/50 p-6 sm:p-8 animate-scale-in"
+                                onClick={(e) => e.stopPropagation()}
                             >
-                                <svg className="w-4 h-4 text-ink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-
-                            {/* Header */}
-                            <div className="text-center mb-8">
-                                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-accent-coral to-accent-gold mb-3">
-                                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                {/* Close Button */}
+                                <button
+                                    onClick={() => setRateCardOpen(false)}
+                                    className="absolute top-4 right-4 p-2 rounded-full bg-white border border-ink-100 hover:border-accent-coral/40 hover:bg-accent-coral/5 transition-all duration-300 z-10"
+                                >
+                                    <svg className="w-4 h-4 text-ink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
-                                </div>
-                                <h3 className="font-heading text-lg font-bold text-ink-700">Rate Card</h3>
-                                <p className="font-body text-xs text-ink-400 mt-1">Choose the package that fits your needs</p>
-                            </div>
+                                </button>
 
-                            {/* Pricing Cards */}
-                            <div className="grid md:grid-cols-3 gap-4">
-                                {pricingPlans.map((plan) => {
-                                    const isExpanded = expandedPlan === plan.name;
-                                    const isHighlight = plan.highlight;
-                                    return (
-                                        <div
-                                            key={plan.name}
-                                            className={`relative rounded-2xl border-2 p-5 transition-all duration-500 cursor-pointer hover-lift
+                                {/* Header */}
+                                <div className="text-center mb-8">
+                                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-accent-coral to-accent-gold mb-3">
+                                        <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="font-heading text-lg font-bold text-ink-700">Rate Card</h3>
+                                    <p className="font-body text-xs text-ink-400 mt-1">Choose the package that fits your needs</p>
+                                </div>
+
+                                {/* Pricing Cards */}
+                                <div className="grid md:grid-cols-3 gap-4">
+                                    {pricingPlans.map((plan) => {
+                                        const isExpanded = expandedPlan === plan.name;
+                                        const isHighlight = plan.highlight;
+                                        return (
+                                            <div
+                                                key={plan.name}
+                                                className={`relative rounded-2xl border-2 p-5 transition-all duration-500 cursor-pointer hover-lift
                                                 ${isHighlight
-                                                    ? 'border-accent-coral/40 bg-gradient-to-b from-white to-accent-coral/5 shadow-lg shadow-accent-coral/10 md:scale-[1.03] md:-translate-y-1'
-                                                    : 'border-ink-100/40 bg-white hover:border-accent-blue/30 hover:shadow-md'
-                                                }`}
-                                            onClick={() => togglePlan(plan.name)}
-                                        >
-                                            {plan.badge && (
-                                                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                                                    <span className="inline-block px-3 py-0.5 bg-gradient-to-r from-accent-coral to-accent-gold text-white text-[0.55rem] font-bold font-heading uppercase tracking-wider rounded-full shadow-sm">
-                                                        {plan.badge}
+                                                        ? 'border-accent-coral/40 bg-gradient-to-b from-white to-accent-coral/5 shadow-lg shadow-accent-coral/10 md:scale-[1.03] md:-translate-y-1'
+                                                        : 'border-ink-100/40 bg-white hover:border-accent-blue/30 hover:shadow-md'
+                                                    }`}
+                                                onClick={() => togglePlan(plan.name)}
+                                            >
+                                                {plan.badge && (
+                                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                                                        <span className="inline-block px-3 py-0.5 bg-gradient-to-r from-accent-coral to-accent-gold text-white text-[0.55rem] font-bold font-heading uppercase tracking-wider rounded-full shadow-sm">
+                                                            {plan.badge}
+                                                        </span>
+                                                    </div>
+                                                )}
+
+                                                <div className="text-center mb-3">
+                                                    <span className="text-2xl">{plan.icon}</span>
+                                                    <h3 className="font-heading text-base font-bold text-ink-700 mt-1">{plan.name}</h3>
+                                                    <span className="font-mono text-[0.55rem] text-ink-300 tracking-wider uppercase">{plan.subtitle}</span>
+                                                </div>
+
+                                                <div className="text-center mb-3">
+                                                    <span className="block font-mono text-[0.55rem] text-ink-300 uppercase">{plan.prefix}</span>
+                                                    <span className={`font-display text-xl font-bold ${isHighlight ? 'text-accent-coral' : 'text-ink-700'}`}>
+                                                        {plan.price}
                                                     </span>
                                                 </div>
-                                            )}
 
-                                            <div className="text-center mb-3">
-                                                <span className="text-2xl">{plan.icon}</span>
-                                                <h3 className="font-heading text-base font-bold text-ink-700 mt-1">{plan.name}</h3>
-                                                <span className="font-mono text-[0.55rem] text-ink-300 tracking-wider uppercase">{plan.subtitle}</span>
-                                            </div>
+                                                <p className="font-body text-xs text-ink-400 text-center leading-relaxed mb-4">{plan.description}</p>
 
-                                            <div className="text-center mb-3">
-                                                <span className="block font-mono text-[0.55rem] text-ink-300 uppercase">{plan.prefix}</span>
-                                                <span className={`font-display text-xl font-bold ${isHighlight ? 'text-accent-coral' : 'text-ink-700'}`}>
-                                                    {plan.price}
-                                                </span>
-                                            </div>
+                                                <button
+                                                    className="w-full flex items-center justify-center gap-1 text-[0.6rem] font-heading font-medium text-ink-300 hover:text-ink-500 transition-colors"
+                                                    onClick={(e) => { e.stopPropagation(); togglePlan(plan.name); }}
+                                                >
+                                                    {isExpanded ? 'Hide Details' : 'View Details'}
+                                                    <svg className={`w-3 h-3 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </button>
 
-                                            <p className="font-body text-xs text-ink-400 text-center leading-relaxed mb-4">{plan.description}</p>
-
-                                            <button
-                                                className="w-full flex items-center justify-center gap-1 text-[0.6rem] font-heading font-medium text-ink-300 hover:text-ink-500 transition-colors"
-                                                onClick={(e) => { e.stopPropagation(); togglePlan(plan.name); }}
-                                            >
-                                                {isExpanded ? 'Hide Details' : 'View Details'}
-                                                <svg className={`w-3 h-3 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                                </svg>
-                                            </button>
-
-                                            <div className={`overflow-hidden transition-all duration-400 ease-out ${isExpanded ? 'max-h-60 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'}`}>
-                                                <div className="border-t border-ink-100/30 pt-3 space-y-2">
-                                                    {plan.features.map((feat) => (
-                                                        <div key={feat} className="flex items-start gap-2">
-                                                            <svg className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${isHighlight ? 'text-accent-coral' : 'text-accent-teal'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                                            </svg>
-                                                            <span className="font-body text-xs text-ink-500">{feat}</span>
-                                                        </div>
-                                                    ))}
+                                                <div className={`overflow-hidden transition-all duration-400 ease-out ${isExpanded ? 'max-h-60 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'}`}>
+                                                    <div className="border-t border-ink-100/30 pt-3 space-y-2">
+                                                        {plan.features.map((feat) => (
+                                                            <div key={feat} className="flex items-start gap-2">
+                                                                <svg className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${isHighlight ? 'text-accent-coral' : 'text-accent-teal'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                                                </svg>
+                                                                <span className="font-body text-xs text-ink-500">{feat}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <a
-                                                href={waLink(plan.name)}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                onClick={(e) => e.stopPropagation()}
-                                                className={`mt-4 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-heading text-xs font-bold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg
+                                                <a
+                                                    href={waLink(plan.name)}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                    className={`mt-4 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-heading text-xs font-bold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg
                                                     ${isHighlight
-                                                        ? 'bg-gradient-to-r from-accent-coral to-accent-gold text-white hover:shadow-accent-coral/20'
-                                                        : 'bg-ink-700 text-cream-50 hover:bg-ink-600 hover:shadow-ink-200/30'
-                                                    }`}
-                                            >
-                                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-                                                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.121.553 4.116 1.52 5.854L.053 23.681a.5.5 0 00.613.613l5.826-1.468A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.78 9.78 0 01-5.202-1.49l-.373-.222-3.87.975.99-3.822-.243-.387A9.818 9.818 0 1112 21.818z" fillRule="evenodd" clipRule="evenodd" />
-                                                </svg>
-                                                Get in Touch
-                                            </a>
-                                        </div>
-                                    );
-                                })}
-                            </div>
+                                                            ? 'bg-gradient-to-r from-accent-coral to-accent-gold text-white hover:shadow-accent-coral/20'
+                                                            : 'bg-ink-700 text-cream-50 hover:bg-ink-600 hover:shadow-ink-200/30'
+                                                        }`}
+                                                >
+                                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                                                        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.121.553 4.116 1.52 5.854L.053 23.681a.5.5 0 00.613.613l5.826-1.468A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.78 9.78 0 01-5.202-1.49l-.373-.222-3.87.975.99-3.822-.243-.387A9.818 9.818 0 1112 21.818z" fillRule="evenodd" clipRule="evenodd" />
+                                                    </svg>
+                                                    Get in Touch
+                                                </a>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
 
-                            <p className="text-center font-body text-[0.6rem] text-ink-300 mt-6 flex items-center justify-center gap-1.5">
-                                <svg className="w-3 h-3 text-ink-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                Prices do not include domain & hosting
-                            </p>
+                                <p className="text-center font-body text-[0.6rem] text-ink-300 mt-6 flex items-center justify-center gap-1.5">
+                                    <svg className="w-3 h-3 text-ink-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    Prices do not include domain & hosting
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                )}
-            </div>
-        </section>
+                    )
+                }
+            </div >
+        </section >
     );
 }
